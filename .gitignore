@@ -9,3 +9,5 @@ wheels/
 # Virtual environments
 .venv
 .agents
+skills-lock.json
+.gitignore
