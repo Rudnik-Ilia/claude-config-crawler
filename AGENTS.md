@@ -1,0 +1,1 @@
+/home/ilia53/rules_for_agents/AGENTS.md

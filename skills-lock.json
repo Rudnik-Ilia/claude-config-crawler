@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "skills": {
+    "langchain-build-agent": {
+      "source": "langchain-ai/langchain-skills",
+      "commit": "8f4f0a4fee70ca54d1d2674f0cb56dfc554a5ab4",
+      "sourceType": "github",
+      "skillPath": "skills/langchain-build-agent/SKILL.md",
+      "computedHash": "7632682b9610a2f51285554b5c0477d621ddafa5e7780ea7177b9ae17380ec6b"
+    },
+    "langgraph": {
+      "source": "sickn33/agentic-awesome-skills",
+      "commit": "8f1eb06978b026c5434284202c22215792c3071c",
+      "sourceType": "github",
+      "skillPath": "skills/langgraph/SKILL.md",
+      "computedHash": "c8274e06546c3985d1a6ec2d51847e84e867608318ed038a0509cc43049642f0"
+    }
+  }
+}
