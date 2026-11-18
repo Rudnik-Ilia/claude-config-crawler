@@ -19,3 +19,11 @@ LLM_TEMPERATURE: Final[float] = 0
 LLM_TIMEOUT_SECONDS: Final[int] = 900
 LLM_MAX_RETRIES: Final[int] = 2
 LLM_USE_RESPONSES_API: Final[bool] = False
+
+TEMPORAL_ADDRESS: Final[str] = "localhost:7233"
+TEMPORAL_DATABASE_FILE: Final[Path] = Path("src/runner/database/temporal.sqlite")
+TEMPORAL_TASK_QUEUE: Final[str] = "claude-analysis"
+TEMPORAL_ACTIVITY_TIMEOUT_SECONDS: Final[int] = 1200
+TEMPORAL_HEARTBEAT_SECONDS: Final[int] = 5
+TEMPORAL_HEARTBEAT_TIMEOUT_SECONDS: Final[int] = 30
+TEMPORAL_MAX_ATTEMPTS: Final[int] = 3

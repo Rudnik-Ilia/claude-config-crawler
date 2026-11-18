@@ -26,8 +26,9 @@ class Assessment(BaseModel):
 
 
 class ReportWriter:
-    def __init__(self, output_dir: Path) -> None:
+    def __init__(self, output_dir: Path, deduplicate: bool = False) -> None:
         self.output_dir = output_dir
+        self.deduplicate = deduplicate
         self.analyses_dir = output_dir / settings.ANALYSES_SUBDIRECTORY
         self.data_to_check_dir = output_dir / settings.DATA_TO_CHECK_SUBDIRECTORY
 
@@ -52,6 +53,14 @@ class ReportWriter:
         self.analyses_dir.mkdir(parents=True, exist_ok=True)
         report_path = self.analyses_dir / f"{owner}__{repository}.md"
         descriptions = "\n\n".join(finding.description for finding in assessment.findings)
+        if self.deduplicate:
+            existing = report_path.read_text(encoding="utf-8") if report_path.exists() else ""
+            if f"<{github_url}>\n" in existing:
+                return report_path
+            temporary_path = report_path.with_suffix(".md.tmp")
+            temporary_path.write_text(existing + f"<{github_url}>\n\n{descriptions}\n\n", encoding="utf-8")
+            temporary_path.replace(report_path)
+            return report_path
         with report_path.open("a", encoding="utf-8") as output_stream:
             output_stream.write(f"<{github_url}>\n\n")
             output_stream.write(descriptions + "\n\n")

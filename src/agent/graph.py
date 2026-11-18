@@ -36,12 +36,12 @@ def route(state: ReportState) -> Literal["save", "__end__"]:
     return "save" if state["assessment"].create_report else "__end__"
 
 
-def build_report_graph(model: ChatOpenAI, system_prompt: str, output_dir: Path) -> CompiledStateGraph:
+def build_report_graph(model: ChatOpenAI, system_prompt: str, output_dir: Path, deduplicate: bool = False) -> CompiledStateGraph:
     evaluator = model.with_structured_output(Assessment, method="json_schema")
     instructions = SYSTEM_PROMPT.format(append_to_system_prompt=system_prompt)
     builder = StateGraph(ReportState)
     builder.add_node("evaluate", partial(evaluate, evaluator=evaluator, instructions=instructions))
-    builder.add_node("save", partial(write_report, writer=ReportWriter(output_dir)))
+    builder.add_node("save", partial(write_report, writer=ReportWriter(output_dir, deduplicate=deduplicate)))
     builder.add_edge(START, "evaluate")
     builder.add_conditional_edges("evaluate", route)
     builder.add_edge("save", END)
