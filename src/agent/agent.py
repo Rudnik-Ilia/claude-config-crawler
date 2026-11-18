@@ -3,10 +3,10 @@ from pathlib import Path
 
 from langchain_openai.chat_models.base import ChatOpenAI
 
-from src.agent.exceptions import AgentProcessingError
 from src.agent.graph import build_report_graph
 from src.agent.llm import build_model
 from src.core.data_fetching import DataFetcher
+from src.core.exceptions import AgentProcessingError
 
 
 class Agent:

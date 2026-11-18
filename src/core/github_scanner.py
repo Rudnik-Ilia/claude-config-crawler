@@ -5,7 +5,7 @@ from pathlib import Path
 from types import ModuleType
 
 from src.core.gh_builder import GH
-from src.reporting.ReportWriter import ReportWriter
+from src.reporting.report_writer import ReportWriter
 
 
 class GitScaner:

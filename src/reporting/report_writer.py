@@ -53,5 +53,6 @@ class ReportWriter:
         report_path = self.analyses_dir / f"{owner}__{repository}.md"
         descriptions = "\n\n".join(finding.description for finding in assessment.findings)
         with report_path.open("a", encoding="utf-8") as output_stream:
+            output_stream.write(f"<{github_url}>\n\n")
             output_stream.write(descriptions + "\n\n")
         return report_path

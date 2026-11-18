@@ -4,9 +4,8 @@ from collections.abc import Iterator
 from pathlib import Path
 from urllib.request import urlopen
 
+from core.exceptions import ReadLineCSVExeption
 
-class ReadLineCSVExeption(Exception):
-    ...
 
 class DataFetcher:
     def __init__(self, csv_path: str | Path) -> None:
