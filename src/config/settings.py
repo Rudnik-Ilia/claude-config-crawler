@@ -16,6 +16,6 @@ LLAMA_CPP_BASE_URL: Final[str] = os.getenv("LLAMA_CPP_BASE_URL", "http://10.100.
 LLAMA_CPP_MODEL: Final[str] = os.getenv("LLAMA_CPP_MODEL", "local-model")
 LLAMA_CPP_API_KEY: Final[str] = os.getenv("LLAMA_CPP_API_KEY", "not-needed")
 LLM_TEMPERATURE: Final[float] = 0
-LLM_TIMEOUT_SECONDS: Final[int] = 300
+LLM_TIMEOUT_SECONDS: Final[int] = 900
 LLM_MAX_RETRIES: Final[int] = 2
 LLM_USE_RESPONSES_API: Final[bool] = False

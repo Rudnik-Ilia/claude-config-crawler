@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import csv
 from pathlib import Path
 from typing import Literal
@@ -34,7 +36,7 @@ class ReportWriter:
         report_path = self.data_to_check_dir / filename
         with report_path.open("w", newline="", encoding="utf-8") as output_stream:
             fieldnames: tuple[str, ...] = ("repository", "configuration_path", "github_url")
-            csv_writer = csv.DictWriter[str](output_stream, fieldnames=fieldnames)
+            csv_writer: csv.DictWriter[str] = csv.DictWriter(output_stream, fieldnames=fieldnames)
             csv_writer.writeheader()
             csv_writer.writerows(sorted(results, key=lambda result: (result["repository"], result["configuration_path"])))
 
@@ -53,4 +55,3 @@ class ReportWriter:
         with report_path.open("a", encoding="utf-8") as output_stream:
             output_stream.write(descriptions + "\n\n")
         return report_path
-
