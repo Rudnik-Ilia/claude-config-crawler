@@ -29,6 +29,8 @@ def main() -> None:
 
     if args.csv is None:
         raise ValueError("CSV path is required: provide --csv")
+    if not args.base_url or not args.base_url.strip():
+        raise SystemExit("llama.cpp URL is required: set LLAMA_CPP_BASE_URL or pass --base-url")
     if args.temporal:
         from src.runner.runner import AnalysisRequest, TemporalRunner
 

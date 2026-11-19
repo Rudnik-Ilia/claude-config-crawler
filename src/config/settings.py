@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     MAX_PAGES_PER_QUERY: int = 10
     DELAY_BETWEEN_REQUESTS_SECONDS: int = 7
 
-    LLAMA_CPP_BASE_URL: str = "http://10.100.102.5:8080/v1"
+    LLAMA_CPP_BASE_URL: str = ""
     LLAMA_CPP_MODEL: str = "local-model"
     LLAMA_CPP_API_KEY: str = "not-needed"
     LLM_TEMPERATURE: float = 0

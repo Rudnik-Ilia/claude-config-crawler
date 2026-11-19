@@ -1,0 +1,42 @@
+x-app: &app
+  image: claude-settings-scan:local
+  build: .
+  init: true
+  env_file:
+    - path: .env
+      required: false
+  environment:
+    TEMPORAL_ADDRESS: temporal:7233
+    REPORT_DIRECTORY: /app/report
+    OUTPUT_FILE: /app/report/claude_settings_inventory.csv
+  volumes:
+    - ./report:/app/report
+
+services:
+  cli:
+    <<: *app
+
+  temporal:
+    image: temporalio/temporal:1.10.1
+    profiles: [temporal]
+    command: ["server", "start-dev", "--ip", "0.0.0.0", "--db-filename", "/home/temporal/temporal.sqlite"]
+    volumes:
+      - temporal-data:/home/temporal
+    ports:
+      - "127.0.0.1:${TEMPORAL_UI_PORT:-8233}:8233"
+    healthcheck:
+      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "127.0.0.1:7233"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  worker:
+    <<: *app
+    profiles: [temporal]
+    command: ["worker"]
+    depends_on:
+      temporal:
+        condition: service_healthy
+
+volumes:
+  temporal-data:
