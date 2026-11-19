@@ -2,14 +2,14 @@ import json
 import subprocess
 import time
 from pathlib import Path
-from types import ModuleType
+from src.config.settings import Settings
 
 from src.core.gh_builder import GH
 from src.reporting.report_writer import ReportWriter
 
 
 class GitScaner:
-    def __init__(self, settings: ModuleType) -> None:
+    def __init__(self, settings: Settings) -> None:
         self.settings = settings
 
     def _show_progress(self, completed: int, total: int, message: str) -> None:

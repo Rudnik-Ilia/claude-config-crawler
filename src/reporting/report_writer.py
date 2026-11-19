@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 
 from pydantic import BaseModel, ConfigDict
 
-from src.config import settings
+from src.config.settings import settings
 
 
 class Finding(BaseModel):

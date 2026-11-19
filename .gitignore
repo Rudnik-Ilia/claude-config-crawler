@@ -8,8 +8,10 @@ wheels/
 
 # Virtual environments
 .venv
+.env
 .agents
 skills-lock.json
 .gitignore
 report
 AGENTS.md
+src/runner/database/temporal.sqlite

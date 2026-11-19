@@ -1,0 +1,6 @@
+Temporal CLI 1.10.1 (Server 1.32.2, UI 2.56.4)
+
+Temporal Server:      localhost:7233
+Temporal Persistence: src/runner/database/temporal.sqlite
+Temporal UI:          http://localhost:8233
+Temporal Metrics:     http://localhost:33643/metrics

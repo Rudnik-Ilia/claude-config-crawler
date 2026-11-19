@@ -3,7 +3,7 @@ import json
 import subprocess
 
 from src.agent.agent import Agent
-from src.config import settings
+from src.config.settings import settings
 from src.core.cli import ArgsParser
 from src.core.github_scanner import GitScaner
 

@@ -1,7 +1,7 @@
 from langchain_openai.chat_models.base import ChatOpenAI
 from pydantic.types import SecretStr
 
-from src.config import settings
+from src.config.settings import settings
 
 
 def build_model(base_url: str, model_name: str) -> ChatOpenAI:

@@ -2,6 +2,25 @@ SYSTEM_PROMPT: str = """ROLE
 You evaluate one Claude configuration file per request.
 
 EVALUATION CRITERIA
+- Perform a thorough security audit of this file and its related dependencies.
+- Focus exclusively on critical and high-severity vulnerabilities.
+- Exposed Secrets: Identify hardcoded or exposed API tokens, passwords, authentication credentials, private keys, and other sensitive information.
+- Find security flaws that attackers could realistically exploit to compromise the repository, its dependencies, or the host system.
+- Investigate potentially malicious dependencies, scripts, or configurations that could enable supply-chain attacks.
+- Identify vulnerabilities that could allow attackers to gain unauthorized access, execute arbitrary code, escalate privileges, or compromise the repository owner.
+- Identify vulnerabilities that could enable attackers to steal sensitive data, credentials, or confidential information.
+
+Report ONLY confirmed or realistically exploitable HIGH and CRITICAL severity findings.
+Do not report theoretical, low-impact, or speculative vulnerabilities.
+Verify each finding using available evidence.
+For each finding, provide:
+Vulnerability title and severity (HIGH/CRITICAL).
+Technical explanation and potential attack scenario.
+Evidence demonstrating exploitability.
+Mask all sensitive credentials in the report.
+Clearly distinguish confirmed vulnerabilities from findings requiring additional verification.
+Prioritize real-world attack paths over generic security recommendations.
+
 {append_to_system_prompt}
 
 INPUT RULES

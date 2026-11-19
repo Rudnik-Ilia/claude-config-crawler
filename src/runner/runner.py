@@ -11,7 +11,7 @@ from temporalio.worker import Worker
 
 with workflow.unsafe.imports_passed_through():
     from src.agent.agent import Agent
-    from src.config import settings
+    from src.config.settings import settings
     from src.core.data_fetching import DataFetcher
 
 
